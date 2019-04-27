@@ -1,5 +1,5 @@
 {
-  "name": "state.macro",
+  "name": "reactive.macro",
   "version": "0.0.1-alpha.1",
   "description": "",
   "main": "lib/index.js",
