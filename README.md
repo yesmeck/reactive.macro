@@ -1,6 +1,31 @@
 # reactive.macro
 
-Reduce boilerplate.
+A babel macro which allows you to declare a state just like declaring a normal variable, and then update the state like updating a normal variable.
+
+**This project is still an experiment, don't use it in production.**
+
+## Usage
+
+```javascript
+import React from 'react';
+import { state, bind } from 'reactive.macro';
+
+export default () => {
+  let a = state(1);
+  let b = state(2);
+
+  return (
+    <div>
+      <input type="number" value={bind(a)} />
+      <input type="number" value={bind(b)} />
+
+      <p>{a} + {b} = {a + b}</p>
+    </div>
+  );
+};
+```
+
+Transform to:
 
 ```javascript
 import React, { useState } from 'react';
@@ -28,21 +53,6 @@ export default () => {
 };
 ```
 
-```javascript
-import React from 'react';
-import { state, bind } from 'reactive.macro';
+## License
 
-export default () => {
-  let a = state(1);
-  let b = state(2);
-
-  return (
-    <div>
-      <input type="number" value={bind(a)} />
-      <input type="number" value={bind(b)} />
-
-      <p>{a} + {b} = {a + b}</p>
-    </div>
-  );
-};
-```
+[MIT](LICENSE)
