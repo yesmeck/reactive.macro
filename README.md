@@ -25,7 +25,7 @@ export default () => {
 };
 ```
 
-Transform to:
+Equals to:
 
 ```javascript
 import React, { useState } from 'react';
