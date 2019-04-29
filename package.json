@@ -1,13 +1,16 @@
 {
   "name": "reactive.macro",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
     "watch": "tsc -w"
   },
-  "keywords": ["react", "babel-plugin-macros"],
+  "keywords": [
+    "react",
+    "babel-plugin-macros"
+  ],
   "author": "Wei Zhu <yesmeck@gmail.com>",
   "license": "MIT",
   "files": [
