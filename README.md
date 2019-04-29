@@ -76,9 +76,9 @@ Declare a state.
 }
 ```
 
-You can update the value of `count` directly with out calling `setState`.
+You can update the value of `count` directly without calling `setState`.
 
-Note: using array methods like push and splice won't trigger re-render. Instead you can use spread syntax.
+Note: using array methods like `push` and `splice` won't trigger re-render. Instead you can use spread syntax.
 
 ```javascript
 let users = state([]);
