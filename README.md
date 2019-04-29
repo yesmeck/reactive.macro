@@ -1,8 +1,18 @@
 # reactive.macro
 
-A babel macro which allows you to declare a state just like declaring a normal variable, and then update the state like updating a normal variable.
+A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that help you reduce the React boilerplate.
 
 **This project is still an experiment, don't use it in production.**
+
+## Installation
+
+You need [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) before using this package.
+
+If you are using create-react-app, it's already included babel-plugin-macros.
+
+```javascript
+$ npm install reactive.macro --save
+```
 
 ## Usage
 
@@ -17,7 +27,7 @@ export default () => {
   return (
     <div>
       <input type="number" value={bind(a)} />
-      <input type="number" value={bind(b)} />
+      <button onClick={b => b += 1} >b+</button>
 
       <p>{a} + {b} = {a + b}</p>
     </div>
@@ -25,32 +35,78 @@ export default () => {
 };
 ```
 
-Equals to:
+Equals:
 
 ```javascript
 import React, { useState } from 'react';
 
 export default () => {
-  const [a, setA] = useState(1);
-  const [b, setB] = useState(2);
-
-  function handleChangeA(event) {
-    setA(+event.target.value);
-  }
-
-  function handleChangeB(event) {
-    setB(+event.target.value);
-  }
+  const [a, setA] = useState(0);
+  const [b, setB] = useState(1);
 
   return (
     <div>
-      <input type="number" value={a} onChange={handleChangeA}/>
-      <input type="number" value={b} onChange={handleChangeB}/>
+      <input type="number" value={a} onChange={e => setA(e.target.value)} />
+      <button onClick={b => setB(b + 1)} >b+</button>
 
       <p>{a} + {b} = {a + b}</p>
     </div>
   );
 };
+```
+
+## API
+
+### `state`
+
+Declare a state.
+
+### Arguments
+
+- `initialState` - Initial value.
+
+
+### Example
+
+```javascript
+() => {
+  let count = state(0);
+
+  return <button onClick={() => count + 1}>Clicked {count} {count > 1 ? 'times' : 'time'}</button>
+}
+```
+
+You can update the value of `count` directly with out calling `setState`.
+
+Note: using array methods like push and splice won't trigger re-render. Instead you can use spread syntax.
+
+```javascript
+let users = state([]);
+
+const addUser = (user) => {
+	users = [...users, user];
+}
+```
+
+### `bind`
+
+Automatic a state to a form control.
+
+- `state` - The state which is declared bye `state` macro.
+
+### Example
+
+```javascript
+() => {
+  let name = state('');
+
+  return (
+    <div>
+      <input value={bind(name)} />
+      Hello {name}!
+    </div>
+  );
+}
 ```
 
 ## License
