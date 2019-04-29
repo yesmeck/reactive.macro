@@ -1,5 +1,5 @@
 import * as t from '@babel/types';
-import { NodePath, Binding } from '@babel/traverse';
+import { NodePath } from '@babel/traverse';
 import { addNamed } from '@babel/helper-module-imports';
 import { createMacro } from 'babel-plugin-macros';
 
@@ -15,17 +15,18 @@ function getUpdater(path: NodePath<t.Identifier>): t.Identifier | undefined {
   for (let key of Object.keys(bindings)) {
     if (key === path.node.name) {
       const binding = bindings[key];
-      return (((binding.path.node as t.VariableDeclarator).id as t.ArrayPattern).elements as t.Identifier[])[1];
+      return (binding.path.node as t.VariableDeclarator).id as t.Identifier;
     }
   }
 }
 
-function stateMacro(path: NodePath) {
+function stateMacro(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
   const variableDeclaration = path.findParent(p => t.isVariableDeclaration(p)) as NodePath<t.VariableDeclaration>;
   const stateVariable = path.find(p => t.isVariableDeclarator(p)).get('id') as NodePath<t.Identifier>;
   const initState = getInitState(path);
   const hookId = addNamed(path, 'useState', 'react');
   const updater = path.scope.generateUidIdentifier(`set${stateVariable.node.name}`);
+  stateUpdaters.set(stateVariable.node.name, updater);
   variableDeclaration.replaceWith(
     t.variableDeclaration('const', [
       t.variableDeclarator(
@@ -58,11 +59,11 @@ function stateMacro(path: NodePath) {
   });
 }
 
-function bindMacro(path: NodePath) {
+function bindMacro(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
   const jsxElement = path.findParent(p => t.isJSXOpeningElement(p)) as NodePath<t.JSXOpeningElement>;
   const stateVariable = (path.parentPath.get('arguments') as Array<NodePath>)[0] as NodePath<t.Identifier>;
-  const updater = getUpdater(stateVariable);
   const eventVariable = path.scope.generateUidIdentifier('e');
+  const updater = stateUpdaters.get(stateVariable.node.name);
   jsxElement.node.attributes.push(
     t.jsxAttribute(
       t.jsxIdentifier('onChange'),
@@ -80,11 +81,12 @@ function bindMacro(path: NodePath) {
 }
 
 function reactive({ references }: { references: { [name: string]: NodePath[] } }) {
+  const stateUpdaters: Map<string, t.Identifier> = new Map;
   if (references.state) {
-    references.state.forEach(stateMacro);
+    references.state.forEach((path) => stateMacro(stateUpdaters, path));
   }
   if (references.bind) {
-    references.bind.forEach(bindMacro);
+    references.bind.forEach((path) => bindMacro(stateUpdaters, path));
   }
 }
 
