@@ -2,8 +2,6 @@
 
 A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that help you reduce the React boilerplate.
 
-**This project is still an experiment, don't use it in production.**
-
 ## Installation
 
 You need [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) before using this package.
