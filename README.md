@@ -90,7 +90,7 @@ const addUser = (user) => {
 
 ### `bind`
 
-Automatic a state to a form control.
+Bind a state to a form control.
 
 - `state` - The state which is declared bye `state` macro.
 
