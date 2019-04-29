@@ -1,6 +1,6 @@
 import * as t from '@babel/types';
 import { NodePath } from '@babel/traverse';
-import { addNamed } from '@babel/helper-module-imports';
+import { addNamed, addDefault } from '@babel/helper-module-imports';
 import { createMacro } from 'babel-plugin-macros';
 
 type Argument = t.Expression | t.SpreadElement | t.JSXNamespacedName | t.ArgumentPlaceholder;
@@ -64,6 +64,9 @@ function bindMacro(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
   const stateVariable = (path.parentPath.get('arguments') as Array<NodePath>)[0] as NodePath<t.Identifier>;
   const eventVariable = path.scope.generateUidIdentifier('e');
   const updater = stateUpdaters.get(stateVariable.node.name);
+  const helperId = addDefault(path, 'reactive.macro/lib/helpers/getValue', {
+    nameHint: 'getValue',
+  });
   jsxElement.node.attributes.push(
     t.jsxAttribute(
       t.jsxIdentifier('onChange'),
@@ -71,7 +74,10 @@ function bindMacro(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
         t.arrowFunctionExpression(
           [eventVariable],
           t.callExpression(updater!, [
-            t.memberExpression(t.memberExpression(eventVariable, t.identifier('target')), t.identifier('value'))
+            t.callExpression(
+              helperId,
+              [eventVariable]
+            )
           ])
         )
       )
