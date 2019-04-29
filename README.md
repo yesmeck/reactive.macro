@@ -35,6 +35,8 @@ export default () => {
 };
 ```
 
+See [live demo](https://codesandbox.io/s/k5ryv0z4p7).
+
 Equals:
 
 ```javascript
