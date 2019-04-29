@@ -7,7 +7,7 @@
     "test": "jest",
     "watch": "tsc -w"
   },
-  "keywords": [],
+  "keywords": ["react", "babel-plugin-macros"],
   "author": "Wei Zhu <yesmeck@gmail.com>",
   "license": "MIT",
   "files": [
