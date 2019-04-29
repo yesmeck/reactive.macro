@@ -1,6 +1,6 @@
 # reactive.macro
 
-A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that help you reduce the React boilerplate.
+A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that helps you reduce the React boilerplate.
 
 ## Installation
 
