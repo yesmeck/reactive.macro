@@ -10,6 +10,9 @@
   "keywords": [],
   "author": "Wei Zhu <yesmeck@gmail.com>",
   "license": "MIT",
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-transform-react-jsx": "^7.3.0",

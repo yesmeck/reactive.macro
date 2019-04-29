@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export function getValue(event: any) {
   if (isEvent(event)) {
     const detypedEvent: any = event;
