@@ -16,6 +16,9 @@ export default function getValue(event: any) {
     if (type === 'select-multiple') {
       return getSelectedValues((event.target as HTMLSelectElement).options);
     }
+    if (type === 'number') {
+      return +value;
+    }
     return value;
   }
   return event;
