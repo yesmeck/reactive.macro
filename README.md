@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/465125/56975124-19539b00-6bab-11e9-927b-df462f5f3034.png" alt="reactive.macro" />
+  <img src="https://user-images.githubusercontent.com/465125/56975295-794a4180-6bab-11e9-9df3-8601ce87bb2e.png" alt="reactive.macro logo" />
 </div>
 
 <hr />
