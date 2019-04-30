@@ -42,7 +42,7 @@ See [live demo](https://codesandbox.io/s/k5ryv0z4p7).
 Equals:
 
 ```javascript
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 export default () => {
   const [a, setA] = useState(0);
@@ -50,7 +50,7 @@ export default () => {
 
   return (
     <div>
-      <input type="number" value={a} onChange={e => setA(e.target.value)} />
+      <input type="number" value={a} onChange={useCallback(e => setA(e.target.value), [])} />
       <button onClick={b => setB(b + 1)} >b+</button>
 
       <p>{a} + {b} = {a + b}</p>
