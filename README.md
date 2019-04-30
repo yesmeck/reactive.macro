@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/465125/56974990-e14c5800-6baa-11e9-9856-a2c500143a45.png" alt="reactive.macro" />
+  <img src="https://user-images.githubusercontent.com/465125/56975124-19539b00-6bab-11e9-927b-df462f5f3034.png" alt="reactive.macro" />
 </div>
 
 [![Travis (.org) branch](https://img.shields.io/travis/yesmeck/reactive.macro/master.svg?style=flat-square)](https://travis-ci.org/yesmeck/reactive.macro)
