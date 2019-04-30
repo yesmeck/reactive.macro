@@ -3,7 +3,7 @@ export default function useToggle() {
   const [visible, _setvisible] = _useState(false);
 
   const toggle = () => {
-    _setvisible(_count => _count = !visible);
+    _setvisible((_visible) => _visible = !_visible);
   };
 
   return [visible, toggle];

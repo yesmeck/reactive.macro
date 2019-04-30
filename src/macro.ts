@@ -45,7 +45,14 @@ function stateMacro(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
         functionDeclaration.scope.hasOwnBinding(variable.name) &&
         variable.name == stateVariable.node.name
       ) {
-        const stateName = functionDeclaration.scope.generateUidIdentifier('count');
+        const stateName = functionDeclaration.scope.generateUidIdentifier(stateVariable.node.name);
+        path.get('right').traverse({
+          Identifier(p: NodePath<t.Identifier>) {
+            if (functionDeclaration.scope.hasOwnBinding(p.node.name) && p.node.name == stateVariable.node.name) {
+              p.replaceWith(stateName);
+            }
+          }
+        });
         path.replaceWith(
           t.callExpression(updater, [
             t.arrowFunctionExpression(
