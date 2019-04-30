@@ -68,11 +68,27 @@ Declare a state.
 
 ### Example
 
+In component:
+
 ```javascript
-() => {
+const App = () => {
   let count = state(0);
 
   return <button onClick={() => count + 1}>Clicked {count} {count > 1 ? 'times' : 'time'}</button>
+}
+```
+
+In custom hook:
+
+```javascript
+const useToggle = () => {
+  let visible = state(false);
+
+  const toggle = () => {
+    visible = !visible
+  }
+
+  return [visible, toggle];
 }
 ```
 
@@ -97,7 +113,7 @@ Bind a state to a form control.
 ### Example
 
 ```javascript
-() => {
+const App = () => {
   let name = state('');
 
   return (
