@@ -2,6 +2,8 @@
   <img src="https://user-images.githubusercontent.com/465125/56975124-19539b00-6bab-11e9-927b-df462f5f3034.png" alt="reactive.macro" />
 </div>
 
+<hr />
+
 [![Travis (.org) branch](https://img.shields.io/travis/yesmeck/reactive.macro/master.svg?style=flat-square)](https://travis-ci.org/yesmeck/reactive.macro)
 
 A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that helps you reduce the React boilerplate.
