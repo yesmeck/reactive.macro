@@ -5,7 +5,10 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "prebuild": "rimraf lib",
+    "build": "tsc",
+    "prepack": "npm run test && npm run build"
   },
   "keywords": [
     "react",
