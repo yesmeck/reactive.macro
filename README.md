@@ -102,7 +102,7 @@ Note: using array methods like `push` and `splice` won't trigger re-render. Inst
 let users = state([]);
 
 const addUser = (user) => {
-	users = [...users, user];
+  users = [...users, user];
 }
 ```
 
