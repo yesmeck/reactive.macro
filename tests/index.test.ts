@@ -10,5 +10,5 @@ pluginTester({
       plugins: ['jsx']
     },
   },
-  fixtures: join(__dirname, '__fixtures__'),
+  fixtures: join(__dirname, 'fixtures'),
 });
