@@ -16,7 +16,7 @@ export default function state(stateUpdaters: Map<string, t.Identifier>, path: No
   const hookId = addNamed(path, 'useState', 'react');
   const updater = path.scope.generateUidIdentifier(`set${stateVariable.node.name}`);
   stateUpdaters.set(stateVariable.node.name, updater);
-  variableDeclaration.replaceWith(
+  variableDeclaration.insertAfter(
     t.variableDeclaration('const', [
       t.variableDeclarator(
         t.arrayPattern([t.identifier(stateVariable.node.name), updater]),
@@ -53,4 +53,5 @@ export default function state(stateUpdaters: Map<string, t.Identifier>, path: No
       }
     }
   });
+  variableDeclaration.remove();
 }
