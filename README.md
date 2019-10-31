@@ -47,8 +47,8 @@ Equals:
 import React, { useState, useCallback } from 'react';
 
 export default () => {
-  const [a, setA] = useState(0);
-  const [b, setB] = useState(1);
+  const [a, setA] = useState(1);
+  const [b, setB] = useState(2);
 
   return (
     <div>
