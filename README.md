@@ -114,7 +114,7 @@ const addUser = (user) => {
 
 Bind a state to a form control.
 
-- `state` - The state which is declared bye `state` macro.
+- `state` - The state which is declared by `state` macro.
 
 ### Example
 
