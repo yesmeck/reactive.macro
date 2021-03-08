@@ -4,7 +4,8 @@
 
 <hr />
 
-[![Travis (.org) branch](https://img.shields.io/travis/yesmeck/reactive.macro/master.svg?style=flat-square)](https://travis-ci.org/yesmeck/reactive.macro)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yesmeck/reactive.macro/Test?style=flat-square)
+![Codecov](https://img.shields.io/codecov/c/github/yesmeck/reactive.macro?style=flat-square)
 
 A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that helps you reduce the React boilerplate.
 
