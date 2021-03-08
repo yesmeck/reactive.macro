@@ -28,9 +28,3 @@ jobs:
 
       - name: test
         run: yarn test --coverage
-
-      - name: Codecov
-        # You may pin to the exact commit or the version.
-        # uses: codecov/codecov-action@e156083f13aff6830c92fc5faa23505779fbf649
-        uses: codecov/codecov-action@v1.2.1
-

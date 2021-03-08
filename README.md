@@ -5,7 +5,6 @@
 <hr />
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/yesmeck/reactive.macro/Test?style=flat-square)
-![Codecov](https://img.shields.io/codecov/c/github/yesmeck/reactive.macro?style=flat-square)
 
 A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that helps you reduce the React boilerplate.
 
