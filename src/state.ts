@@ -11,7 +11,7 @@ function getInitState(path: NodePath): Argument {
 
 export default function state(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
   const variableDeclaration = path.findParent(p => t.isVariableDeclaration(p)) as NodePath<t.VariableDeclaration>;
-  const stateVariable = path.find(p => t.isVariableDeclarator(p)).get('id') as NodePath<t.Identifier>;
+  const stateVariable = path.find(p => t.isVariableDeclarator(p))!.get('id') as NodePath<t.Identifier>;
   const initState = getInitState(path);
   const hookId = addNamed(path, 'useState', 'react');
   const updater = path.scope.generateUidIdentifier(`set${stateVariable.node.name}`);
@@ -25,7 +25,7 @@ export default function state(stateUpdaters: Map<string, t.Identifier>, path: No
     ])
   );
   path.replaceWith(initState);
-  const functionDeclaration = path.getFunctionParent();
+  const functionDeclaration = path.getFunctionParent()!;
   functionDeclaration.traverse({
     AssignmentExpression(path: NodePath<t.AssignmentExpression>) {
       const variable = path.get('left').node;

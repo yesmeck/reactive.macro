@@ -4,7 +4,7 @@ import { addDefault, addNamed } from '@babel/helper-module-imports';
 
 export default function bind(stateUpdaters: Map<string, t.Identifier>, path: NodePath) {
   const jsxElement = path.findParent(p => t.isJSXOpeningElement(p)) as NodePath<t.JSXOpeningElement>;
-  const createElementCall = path.find(p => t.isCallExpression(p)).findParent(p => t.isCallExpression(p)) as NodePath<
+  const createElementCall = path.find(p => t.isCallExpression(p))!.findParent(p => t.isCallExpression(p)) as NodePath<
     t.CallExpression
   >;
   const stateVariable = (path.parentPath.get('arguments') as Array<NodePath>)[0] as NodePath<t.Identifier>;
@@ -28,5 +28,5 @@ export default function bind(stateUpdaters: Map<string, t.Identifier>, path: Nod
       t.objectProperty(t.identifier('onChange'), handler)
     );
   }
-  path.findParent(p => t.isCallExpression(p)).replaceWith(stateVariable.node);
+  path.findParent(p => t.isCallExpression(p))!.replaceWith(stateVariable.node);
 }
