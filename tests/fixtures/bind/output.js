@@ -5,5 +5,11 @@ import React from 'react';
 export default () => {
   const [count, _setcount] = _useState(0);
 
-  return <input type="number" value={count} onChange={_useCallback(_e => _setcount(_getValue(_e)), [])} />;
+  return (
+    <input
+      type="number"
+      value={count}
+      onChange={_useCallback(_e => _setcount(_getValue(_e)), [])}
+    />
+  );
 };
