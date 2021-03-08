@@ -11,4 +11,5 @@ pluginTester({
     },
   },
   fixtures: join(__dirname, 'fixtures'),
+  snapshot: true
 });

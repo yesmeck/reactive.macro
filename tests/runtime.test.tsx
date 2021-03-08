@@ -2,8 +2,8 @@
  * @jest-environment jsdom
  */
 import * as React from 'react';
-import { render, cleanup, act, fireEvent } from 'react-testing-library';
-import 'jest-dom/extend-expect';
+import { render, cleanup, act, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { state, bind } from '../lib/macro';
 
 describe('runtime', () => {

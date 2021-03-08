@@ -4,7 +4,7 @@ module.exports = {
   testPathIgnorePatterns: ['/lib/', '/demo/'],
   globals: {
     'ts-jest': {
-      tsConfig: {
+      tsconfig: {
         module: 'ESNext',
         jsx: 'preserve'
       },
