@@ -16,7 +16,7 @@ $ npm install reactive.macro --save
 
 You need [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) before using this package.
 
-If you are using create-react-app, it's already included babel-plugin-macros.
+If you are using create-react-app, it has included babel-plugin-macros.
 
 ## Usage
 
