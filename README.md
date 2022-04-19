@@ -14,7 +14,7 @@ A [babel macro](https://github.com/kentcdodds/babel-plugin-macros) that helps yo
 $ npm install reactive.macro --save
 ```
 
-You need [babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) before using this package.
+[babel-plugin-macros](https://github.com/kentcdodds/babel-plugin-macros) is required before using this package.
 
 If you are using create-react-app, it has included babel-plugin-macros.
 
